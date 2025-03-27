@@ -27,6 +27,48 @@ env  LD_LIBRARY_PATH=/home/YOUR_PATH_TO_GOWIN/Gowin/IDE/lib ./gw_ide
 
    /*********************************************************/
 
+   Litex:
+   For recent pythons it should be installed in a virtual environment. 
+   python3 -m venv ~/.venv
+   source ~/litex_venv/bin/activate
+   Follow these instructions, adapt were needed: https://www.cce.put.poznan.pl/ESHD_labs/env.html
+   Integration with Gowin EDA is not immediate, because of the requirements as above.
+   For now going with Pro 1.9.11
+   add to .bashrc something like
+
+export PATH=$PATH:$PWD/GowinFull/IDE/bin
+export PATH=$PATH:$PWD/riscv64-unknown-elf-gcc-8.1.0-2019.01.0-x86_64-linux-ubuntu14/bin/
+#following line is needed by Gowin EDA 1.9.11
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfreetype.so
+
+SOC can be built and loaded this way:
+cd ~/litex_venv/litex-boards/litex_boards/targets
+./sipeed_tang_primer_20k.py --build --load
+
+--flash instead of --load burns flash
+
+More parameters can be found here:
+https://www.controlpaths.com/2022/01/17/building-soc-litex/
+
+uploading the demo app:
+add line
+from .demo import main
+to ~/litex_venv/litex-boards/litex_boards/targets/demo/__init__.py
+
+build with
+litex_bare_metal_demo --build-path=~/litex_venv/litex-boards/litex_boards/targets/build/sipeed_tang_primer_20k
+
+open terminal and make ready to uplade demo:
+litex_term  --speed=115200  /dev/ttyUSB1 --kernel=~/litex_venv/litex-boards/litex_boards/targets/demo/demo.bin
+then at litex bios prompt issue 
+serialboot
+
+Sometimes terminal has no communication, see below
+
+
+ /*********************************************************/
+
+
    TODO:
 
    Sometimes putty or minicom don't receives data from the board, like litex risc-v.
