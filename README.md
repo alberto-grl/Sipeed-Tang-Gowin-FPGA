@@ -75,6 +75,12 @@ Solved by renaming or deleting GowinFull/Programmer/bin/libz.so.1, the system's 
 
  /*********************************************************/
 
+ openFPGAloader is working erratically for me, it exits with errors about the serial line.
+ Not using it for now, do not use the --flash option with the generated SOC .py in targets.
+ Using instead the Gowin programmer, image to be flashed is like
+ /home/alberto/litex_venv/litex-boards/litex_boards/targets/build/sipeed_tang_primer_20k/gateware/sipeed_tang_primer_20k.fs
+TODO: there should be a command line Gowin programmer, use it
+ /*********************************************************/
 
    TODO:
 
