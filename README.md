@@ -68,6 +68,13 @@ Sometimes terminal has no communication, see below
 
  /*********************************************************/
 
+After working OK for several days, Gowin programmer refuses to start and gives error
+
+./programmer: /home/alberto/GowinFull/Programmer/bin/libz.so.1: version `ZLIB_1.2.3.4' not found (required by /lib/x86_64-linux-gnu/libpng16.so.16)
+Solved by renaming or deleting GowinFull/Programmer/bin/libz.so.1, the system's version will be used instead. 
+
+ /*********************************************************/
+
 
    TODO:
 
