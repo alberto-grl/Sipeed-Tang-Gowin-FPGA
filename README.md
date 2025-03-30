@@ -51,6 +51,19 @@ export PATH=$PATH:$PWD/riscv64-unknown-elf-gcc-8.1.0-2019.01.0-x86_64-linux-ubun
 
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfreetype.so
 
+~/litex_venv/litex-boards/litex_boards/platforms/sipeed_tang_primer_20k.py wrongly defines some pins at a voltage not available for that bank.
+Relevant lines should be changed to
+
+   ("led", 0,  Pins( "CARD1:44"), IOStandard("LVCMOS18")),
+    ("led", 1,  Pins( "CARD1:46"), IOStandard("LVCMOS18")),
+    ("led", 3,  Pins( "CARD1:40"), IOStandard("LVCMOS18")),
+    ("led", 2,  Pins( "CARD1:42"), IOStandard("LVCMOS18")),
+    ("led", 4,  Pins( "CARD1:98"), IOStandard("LVCMOS33")),
+    ("led", 5,  Pins("CARD1:136"), IOStandard("LVCMOS33")),
+
+
+
+
 SOC can be built and loaded this way:
 
 cd ~/litex_venv/litex-boards/litex_boards/targets
