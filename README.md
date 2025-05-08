@@ -213,7 +213,7 @@ https://github.com/enjoy-digital/litex/wiki/CSR-Bus
 
 TODO: process is quite convoluted. Try to streamline
 
-It's easier to start with the demo software. Create a directory like ~/litex_venv/litex/litex/soc/software/my_c_test
+It's easier to start with the demo software. Create a directory like /home/alberto/litex_venv/litex/litex/soc/software/my_c_test
 Copy all the demo source directory into it, /home/alberto/litex_venv/litex/litex/soc/software/demo/
 TODO: modify makefile and demo.py for using your name of choice.
 Create script in /home/alberto/litex_venv/bin/
@@ -224,9 +224,9 @@ Makefile should be modified too, for your different C files
 There is a demo.py file involved in building, non clear to me how to customize it.
 Just using the demo name and structure, for now.
 Build is by
-:~/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k
+:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k
 Than RAM loading is done with
-~/litex_venv/litex/litex/soc/software/my_c_test$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=demo/demo.bin
+:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=demo/demo.bin
 Do it twice when you don't get the prompt.
 Then issue
 serialboot
