@@ -207,7 +207,41 @@ wb.close()
 Some useful links:
 https://www.controlpaths.com/2022/01/17/building-soc-litex/
 https://github.com/enjoy-digital/litex/wiki/CSR-Bus
-  
+
+ /*********************************************************/
+# Building and loading of a C program in Vexriscv
+
+TODO: process is quite convoluted. Try to streamline
+
+It's easier to start with the demo software. Create a directory like ~/litex_venv/litex/litex/soc/software/my_c_test
+Copy all the demo source directory into it, /home/alberto/litex_venv/litex/litex/soc/software/demo/
+TODO: modify makefile and demo.py for using your name of choice.
+Create script in /home/alberto/litex_venv/bin/
+it should be a copy of /home/alberto/litex_venv/bin/litex_bare_metal_demo
+Modify the from line according to your source directory, like
+from litex.soc.software.my_c_test.demo     import main 
+Makefile should be modified too, for your different C files
+There is a demo.py file involved in building, non clear to me how to customize it.
+Just using the demo name and structure, for now.
+Build is by
+:~/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k
+Than RAM loading is done with
+~/litex_venv/litex/litex/soc/software/my_c_test$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=demo/demo.bin
+Do it twice when you don't get the prompt.
+Then issue
+serialboot
+or 
+reboot
+to litex bios and admire liftoff.
+TODO: use flash or SD
+
+In /home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k/software/include/generated/
+the auto generated csr.h defines constants an function prototype that can be used for accessing hardware, like
+	myperiph_csr0_write(0x5a5a5a5a);
+ Pin toggle is abt 80 ns, can generate a 6 MHz square wave in a while loop. 
+
+
+/*********************************************************/ 
    TODO:
 
    Sometimes putty or minicom don't receives data from the board, like litex risc-v.
@@ -219,5 +253,5 @@ https://github.com/enjoy-digital/litex/wiki/CSR-Bus
 
    The short usb cable included with this Tang sometimes gives errors. With another cable, errors during long transfers disappeared.
    Maximum speed for me is 460800 baud, doubling that it doesn't work anymore and the board should be power cycled.
-   Strangely, the two step invocation should berformed at 115200. Once communmication is established exit litex_term, change speed to 460800 and launch again.
+   Strangely, the two step invocation should be performed at 115200. Once communmication is established exit litex_term, change speed to 460800 and launch again.
    
