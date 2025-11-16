@@ -225,10 +225,10 @@ Modify the from line according to your source directory, like
 `from litex.soc.software.my_c_test.demo     import main    
     
 Makefile should be modified too, for your different C files     
-There is a demo.py file involved in building, non clear to me how to customize it.     
-Just using the demo name and structure, for now.      
+There is an example of an a completely customized c project named socmel_v1.    
+
 Build is by     
-    
+
 `:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k`   
 
 It's important to launch the above command from the directory where c files are     
