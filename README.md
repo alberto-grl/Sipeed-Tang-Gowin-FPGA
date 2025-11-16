@@ -81,10 +81,10 @@ add line
 to `~/litex_venv/litex-boards/litex_boards/targets/demo/__init__.py`    
     
 build with    
-    
+`cd ~/litex_venv/litex/litex/soc/software/demo`
 `litex_bare_metal_demo --build-path=~/litex_venv/litex-boards/litex_boards/targets/build/sipeed_tang_primer_20k`     
     
-open terminal and make ready to uplade demo:    
+open terminal and make ready to upload the demo:    
 
 `litex_term  --speed=115200  /dev/ttyUSB1 --kernel=~/litex_venv/litex-boards/litex_boards/targets/demo/demo.bin`   
    
@@ -229,7 +229,9 @@ There is a demo.py file involved in building, non clear to me how to customize i
 Just using the demo name and structure, for now.      
 Build is by     
     
-`:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k`     
+`:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k`   
+
+It's important to launch the above command from the directory where c files are     
      
 Than RAM loading is done with    
     
@@ -242,8 +244,11 @@ Then issue
 or     
 `reboot`     
 to litex bios and admire liftoff.     
-    
-TODO: use flash or SD     
+
+for SD: rename the .bin output file to boot.bin, load it on an SD  card.     
+`https://github.com/enjoy-digital/litex/wiki/Load-Application-Code-To-CPU`
+	
+TODO: use flash 
      
 In `/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k/software/include/generated/`      
 the auto generated csr.h defines constants an function prototype that can be used for accessing hardware, like      
