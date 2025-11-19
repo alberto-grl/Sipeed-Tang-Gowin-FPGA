@@ -36,7 +36,7 @@ env  LD_LIBRARY_PATH=/home/YOUR_PATH_TO_GOWIN/Gowin/IDE/lib ./gw_ide
    'python3 -m venv ~/.venv    
    source ~/litex_venv/bin/activate`    
        
-   Follow these instructions, adapt were needed: https://www.cce.put.poznan.pl/ESHD_labs/env.html     
+   Follow these instructions, adapt where needed: https://www.cce.put.poznan.pl/ESHD_labs/env.html     
    Integration with Gowin EDA is not immediate, because of the requirements as above.    
    For now going with Pro 1.9.11   
    add to .bashrc something like   
