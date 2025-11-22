@@ -216,26 +216,27 @@ https://github.com/enjoy-digital/litex/wiki/CSR-Bus`
     
 TODO: process is quite convoluted. Try to streamline    
     
-It's easier to start with the demo software. Create a directory like /home/alberto/litex_venv/litex/litex/soc/software/my_c_test   
-Copy all the demo source directory into it, /home/alberto/litex_venv/litex/litex/soc/software/demo/    
-TODO: modify makefile and demo.py for using your name of choice.    
+It's easier to start with the demo software. Create a directory like /home/alberto/litex_venv/litex/litex/soc/software/socmel_1   
+Copy all the demo source directory into it, /home/alberto/litex_venv/litex/litex/soc/software/sdr_v1/    
+TODO: modify makefile and sdr_v1.py, using your name of choice.    
 Create script in /home/alberto/litex_venv/bin/    
 it should be a copy of /home/alberto/litex_venv/bin/litex_bare_metal_demo    
 Modify the from line according to your source directory, like     
-`from litex.soc.software.my_c_test.demo     import main    
-    
+`from litex.soc.software.socmel_1.sdr_1     import main    
+Create 
+`/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k_socmel_1`
 Makefile should be modified too, for your different C files     
 There is an example of an a completely customized c project named socmel_v1.    
 
 Build is by     
 
-`:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_make_my_c_test --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k`   
+`:/home/alberto/litex_venv/litex/litex/soc/software/socmel_1$ litex_make_sdr_v1 --build-path=/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k_socmel_1`   
 
 It's important to launch the above command from the directory where c files are     
      
 Than RAM loading is done with    
     
-`:/home/alberto/litex_venv/litex/litex/soc/software/my_c_test$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=demo/demo.bin`    
+`:/home/alberto/litex_venv/litex/litex/soc/software/socmel_1$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=sdr_1/sdr_1.bin`    
    
 Do it twice when you don't get the prompt.    
 Then issue    
@@ -250,7 +251,7 @@ for SD: rename the .bin output file to boot.bin, load it on an SD  card.
 	
 TODO: use flash 
      
-In `/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k/software/include/generated/`      
+In `/home/alberto/litex_venv/litex-boards/litex_boards/targets/socmel_1/build/sipeed_tang_primer_20k_socmel_1/software/include/generated/`      
 the auto generated csr.h defines constants an function prototype that can be used for accessing hardware, like      
 	`myperiph_csr0_write(0x5a5a5a5a);`    
  Pin toggle is abt 80 ns, can generate a 6 MHz square wave in a while loop.    
