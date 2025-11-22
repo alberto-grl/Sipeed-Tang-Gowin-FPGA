@@ -1,6 +1,6 @@
 # Sipeed-Tang-Gowin-FPGA
 Some notes about Sipeed Tang Primer 20k FPGA board
-
+Most of the notes use https://github.com/alberto-grl/SoCmel_1 for examples
   /*********************************************************/
 
 - Gowin EDA rel. 1.9.11.01 does not work with Ubuntu 24.04, with errors like
@@ -72,6 +72,7 @@ More parameters can be found here:
 
 `https://www.controlpaths.com/2022/01/17/building-soc-litex/`   
 
+There are some MakeSOC scripts in ~/litex_venv/bin/socmel_1 
    
 Uploading the demo app:    
 add line   
