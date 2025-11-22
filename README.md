@@ -222,7 +222,7 @@ TODO: modify makefile and sdr_v1.py, using your name of choice.
 Create script in /home/alberto/litex_venv/bin/    
 it should be a copy of /home/alberto/litex_venv/bin/litex_bare_metal_demo    
 Modify the from line according to your source directory, like     
-`from litex.soc.software.socmel_1.sdr_1     import main    
+`from litex.soc.software.socmel_1.sdr_v1     import main    
 Create 
 `/home/alberto/litex_venv/litex-boards/litex_boards/targets/test/build/sipeed_tang_primer_20k_socmel_1`
 Makefile should be modified too, for your different C files     
@@ -234,9 +234,9 @@ Build is by
 
 It's important to launch the above command from the directory where c files are     
      
-Than RAM loading is done with    
+Then uploading to RAM is done with    
     
-`:/home/alberto/litex_venv/litex/litex/soc/software/socmel_1$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=sdr_1/sdr_1.bin`    
+`:/home/alberto/litex_venv/litex/litex/soc/software/socmel_1$ litex_term --speed=115200 /dev/ttyUSB1 --kernel=sdr_v1/sdr_v1.bin`    
    
 Do it twice when you don't get the prompt.    
 Then issue    
